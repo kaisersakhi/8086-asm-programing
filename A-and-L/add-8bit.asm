@@ -1,0 +1,24 @@
+DATA SEGMENT
+	num1 DB 0FH
+	num2 DB 0FH
+	sum DB ?
+	carry DB ?
+DATA ENDS
+
+CODE SEGMENT
+	ASSUME CS:CODE, DS:DATA
+	START:
+		MOV AX, DATA
+		MOV DS, AX
+		MOV AH, num1
+		MOV AL, num2
+		
+		ADD AH, AL
+		JC SKIP
+		MOV carry, 01H
+		SKIP:
+		MOV sum, AH
+		MOV AX, 4C00H
+		INT 21H
+CODE ENDS
+	END START

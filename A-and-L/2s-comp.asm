@@ -1,0 +1,25 @@
+
+DATA SEGMENT
+     num DB 50H
+	 numc DB ?
+DATA ENDS
+CODE SEGMENT
+    
+    ASSUME CS:CODE, DS:DATA
+	START:
+	MOV AX, DATA
+	MOV DS, AX
+	MOV AL, num
+	NOT AL
+	MOV AH, 01H
+	ADD AL, AH
+	MOV numc, AL
+	
+	MOV AX, 4C00H
+	INT 21H
+	
+	
+CODE ENDS
+
+
+	END START
